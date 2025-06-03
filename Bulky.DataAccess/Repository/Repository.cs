@@ -18,6 +18,7 @@ namespace BulkyBook.DataAccess.Repository
         {
             _db = db;
             this.dbSet = _db.Set<T>(); // this is equavalent to => " _db.Categories.Add(); == dbSet"
+            _db.Products.Include(p => p.Category).Include(p => p.CategoryId);
         }
 
         public void Add(T entity)
@@ -25,16 +26,33 @@ namespace BulkyBook.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public T Get(Expression<Func<T, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(filter);
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll()
+        // you must pass the same property to the "includeProperties": if the property is "Category" u pass "Category" not "category"
+        public IEnumerable<T> GetAll(string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties
+                    .Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.ToList();
         }
 
