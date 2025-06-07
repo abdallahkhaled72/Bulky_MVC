@@ -1,6 +1,8 @@
 using System.Diagnostics;
+using System.Security.Claims;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BulkyBookWeb.Areas.Customer.Controllers
@@ -24,8 +26,44 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         }
         public IActionResult Details(int productId)
         {
-            Product product = _unitOfWork.Product.Get(p => p.Id == productId, includeProperties: "Category");
-            return View(product);
+            ShoppingCart cart = new()
+            {
+                Product = _unitOfWork.Product.Get(p => p.Id == productId, includeProperties: "Category"),
+                Count = 1,
+                ProductId = productId
+            };
+            return View(cart);
+        }
+
+        [HttpPost]
+        [Authorize]  // use Authorize to make the user must be logged in when he wants to add to cart
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            // get User Id by ClaimsIdentity which it is built in function in asp.net
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            shoppingCart.ApplicationUserId = userId;
+
+            // check if the product is existing in the cart or not
+            // if it exists i will update other wise i will add new record
+            ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.Get(c => c.ApplicationUserId == userId &&
+                c.ProductId == shoppingCart.ProductId);
+
+            if (cartFromDb != null)
+            {
+                // shopping cart exists
+                cartFromDb.Count += shoppingCart.Count;
+                _unitOfWork.ShoppingCart.Update(cartFromDb);
+            }
+            else
+            {
+                // add cart - record
+                _unitOfWork.ShoppingCart.Add(shoppingCart);
+            }
+            TempData["success"] = "Cart updated successfully";
+            _unitOfWork.Save();
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
