@@ -197,20 +197,28 @@ namespace BulkyBookWeb.Areas.Identity.Pages.Account
                     }
 
                     var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                    // var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    // Generate a 6-digit random code
+                    var random = new Random();
+                    var verificationCode = random.Next(100000,999999).ToString();
+
+                    // Store both the 6-digit code and the real confirmation token
+                    HttpContext.Session.SetString("VerificationCode", verificationCode);
+                    HttpContext.Session.SetString("RealConfirmationToken", await _userManager.GenerateEmailConfirmationTokenAsync(user));
+                    HttpContext.Session.SetString("VerificationUserId", userId);
+                    HttpContext.Session.SetString("VerificationCodeExpiry", DateTime.Now.AddMinutes(10).ToString()); /// 10-Minutes expiry
+
+                    // Send email with the 6-digit code
+                    // Send email with the formated 6-digit code
+                    var formatedCode = $"{verificationCode.Substring(0,3)} {verificationCode.Substring(3)}";
+                    await _emailSender.SendEmailAsync(Input.Email, "Verify your email",
+                        $"Your verification code is <strong>{formatedCode}</strong>. This code will expire in 10 minutes.");
+
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("VerifyEmail", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else
                     {
