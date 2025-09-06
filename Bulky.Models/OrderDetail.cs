@@ -12,7 +12,7 @@ namespace BulkyBook.Models
     /*
         Order Details will have all the order details of that order like:
             1- what are the items in this order ?
-            2- what the count of each items ?
+            2- what is the count of each items ?
      */
     public class OrderDetail
     {

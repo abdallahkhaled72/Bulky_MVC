@@ -4,6 +4,8 @@ using BulkyBook.Models.ViewModels;
 using BulkyBook.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Stripe.Checkout;
+
 //using Stripe.Checkout;
 using System.Security.Claims;
 
@@ -33,7 +35,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 
                 ShoppingCartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId,
                 includeProperties: "Product"),
-                OrderHeader = new()  // after instructor add orederHeader to ShoppingCartVM he added orderHeader object here
+                OrderHeader = new()  // after instructor added orederHeader to ShoppingCartVM he added orderHeader object here
 
             };
 
@@ -156,62 +158,86 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 // it is a regular customer account and we need to capture payment
                 // Strip Logic (Note: best thing to capture payment using stripe is searching how to do it online: u can write this in search bar("stripe seesion .net"))
 
-                //#region Payment Logic
-                
-                //var domain = "https://localhost:7030/";
-                //var options = new Stripe.Checkout.SessionCreateOptions
-                //{
-                //    SuccessUrl = domain+ $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
-                //    CancelUrl = domain+ "customer/cart/index",
-                //    LineItems = new List<SessionLineItemOptions>(),  // LineItems will have all the products details
-                //    Mode = "payment",
-                //};
+                #region Payment Logic
 
-                //foreach (var item in ShoppingCartVM.ShoppingCartList)
-                //{
-                //    var sessionLineItem = new SessionLineItemOptions
-                //    {
-                //        PriceData = new SessionLineItemPriceDataOptions
-                //        {
-                //            UnitAmount = (long)(item.Price * 100), // $20.50 => 2050   // u have to convert it from 20.50 to 2025
-                //            Currency = "usd",
-                //            ProductData = new SessionLineItemPriceDataProductDataOptions
-                //            {
-                //                Name = item.Product.Title
-                //            }
-                //        },
-                //        Quantity = item.Count // Stripe will automaticlly calculate the total based on the count of items
-                //    };
-                //    // add all items in the line itme
-                //    options.LineItems.Add(sessionLineItem);
-                //}
+                var domain = "https://localhost:7030/";
+                var options = new SessionCreateOptions
+                {
+                    SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
+                    CancelUrl = domain + "customer/cart/index",
+                    LineItems = new List<SessionLineItemOptions>(),  // LineItems will have all the products details
+                    Mode = "payment",
+                };
 
-                //var service = new SessionService();
-                //Session session = service.Create(options);  // we assign a new session object to service because we expect a response from the server 
-                //// when we have a respone there are both the sessionId and paymentIntentId, so we have to update both of them before redirect back
-                //_unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
-                ///*
-                //    Note: PaymentIntentId will be null untile the payment is successful  
-                //            so paymentIntentId will be null here becuase we are just creating a session
-                //            and then we will redirect to the stripe website.
-                //        at the end of the day paymentIntentId will be null here but it's ok
-                // */
-                //_unitOfWork.Save();
+                foreach (var item in ShoppingCartVM.ShoppingCartList)
+                {
+                    var sessionLineItem = new SessionLineItemOptions
+                    {
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            UnitAmount = (long)(item.Price * 100), // $20.50 => 2050   // u have to convert it from 20.50 to 2025
+                            Currency = "usd",
+                            ProductData = new SessionLineItemPriceDataProductDataOptions
+                            {
+                                Name = item.Product.Title
+                            }
+                        },
+                        Quantity = item.Count // Stripe will automaticlly calculate the total based on the count of items
+                    };
+                    // add all items in the line itme
+                    options.LineItems.Add(sessionLineItem);
+                }
 
-                ///*
-                //    *Where is the url of stripe that we should redirect to ?*
-                //    the URL in the respone session
-                // */
-                //Response.Headers.Add("Location",session.Url);
-                //return new StatusCodeResult(303); // this means we are redirecting to new url
-                //#endregion
+                var service = new SessionService();
+                Session session = service.Create(options);  // we assign a new session object to service because we expect a response from the server 
+                // when we have a respone there are both the sessionId and paymentIntentId, so we have to update both of them before redirect back
+                _unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
+                /*
+                    Note: PaymentIntentId will be null untile the payment is successful  
+                            so paymentIntentId will be null here becuase we are just creating a session
+                            and then we will redirect to the stripe website.
+                        at the end of the day paymentIntentId will be null here but it's ok
+                 */
+                _unitOfWork.Save();
+
+                /*
+                    *Where is the url of stripe that we should redirect to ?*
+                    the URL in the respone session
+                 */
+                Response.Headers.Add("Location", session.Url);
+                return new StatusCodeResult(303); // this means we are redirecting to new url
+                #endregion
             }
+
             return RedirectToAction(nameof(OrderConfirmation), new { id = ShoppingCartVM.OrderHeader.Id});
         }
 
 
         public IActionResult OrderConfirmation(int id)
         {
+            OrderHeader orderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == id, includeProperties:"ApplicationUser");
+            if (orderHeader.PaymentStatus != SD.PaymentStatusDelayedPayment)
+            {
+                // this is an order by customer
+
+                var service = new SessionService();
+                Session session = service.Get(orderHeader.SessionId);
+
+                if (session.PaymentStatus.ToLower() == "paid")
+                {
+                    _unitOfWork.OrderHeader.UpdateStripePaymentID(id, session.Id, session.PaymentIntentId);
+                    _unitOfWork.OrderHeader.UpdateStatus(id,SD.StatusApproved,SD.PaymentStatusApproved);
+                    _unitOfWork.Save();
+                    
+                }
+            }
+
+            List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
+                .GetAll(u => u.ApplicationUserId == orderHeader.ApplicationUserId).ToList();
+
+            _unitOfWork.ShoppingCart.RemoveRange(shoppingCarts);
+
+
             return View(id);
         }
 

@@ -37,6 +37,7 @@ namespace BulkyBook.Models
         public string? Carrier { get; set; }
 
 
+        // PaymentDtae and PaymentDueDate both properties are gonna use to only the company users becasue they have an option to pay later
         public DateTime PaymentDate { get; set; }
         public DateOnly PaymentDueDate { get; set; }
 
