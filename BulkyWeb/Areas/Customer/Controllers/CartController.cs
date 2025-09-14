@@ -227,9 +227,9 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 {
                     _unitOfWork.OrderHeader.UpdateStripePaymentID(id, session.Id, session.PaymentIntentId);
                     _unitOfWork.OrderHeader.UpdateStatus(id,SD.StatusApproved,SD.PaymentStatusApproved);
-                    _unitOfWork.Save();
-                    
+                    _unitOfWork.Save();   
                 }
+                HttpContext.Session.Clear();
             }
 
             List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
@@ -251,10 +251,12 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         }
         public IActionResult Minus(int cartId)
         {
-            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId , tracked: true);
             if (cartFromDb.Count <= 1)
             {
                 // remove from cart
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.
+                GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
                 _unitOfWork.ShoppingCart.Remove(cartFromDb);
             }
             else
@@ -269,7 +271,10 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 
         public IActionResult Remove(int cartId)
         {
-            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+            var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked: true);
+            // Decrement the number of cart when the user remove an item from the cart
+            HttpContext.Session.SetInt32(SD.SessionCart,_unitOfWork.ShoppingCart.
+                GetAll(u => u.ApplicationUserId ==  cartFromDb.ApplicationUserId).Count() -1);
             _unitOfWork.ShoppingCart.Remove(cartFromDb);
             _unitOfWork.Save();
             return RedirectToAction(nameof(Index));

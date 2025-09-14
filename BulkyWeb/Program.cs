@@ -24,6 +24,15 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
     .AddDefaultTokenProviders();
 
 
+// facebook
+builder.Services.AddAuthentication().AddFacebook(option =>{
+
+    option.AppId = "793114946600464";
+    option.AppSecret = "ed22d9900d81a9936120326c3dd2d6bf";
+});
+
+
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
@@ -38,6 +47,17 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = $"/Identity/Account/Logout";
     options.AccessDeniedPath= $"/Identity/Account/AccessDenied";
 });
+
+// Add Session Configurations
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromMinutes(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
+
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
@@ -61,6 +81,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
+// add Pipline for the session
 app.UseSession();
 app.MapControllerRoute(
     name: "default",

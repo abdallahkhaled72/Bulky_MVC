@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BulkyBookWeb.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    [Authorize(Roles = SD.Role_Customer)]
+    [Authorize(Roles = $"{SD.Role_Customer},{SD.Role_Company}")]
 
     public class HomeController : Controller
     {
@@ -24,6 +24,8 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
+            
+
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category");
             return View(productList);
         }
@@ -57,14 +59,18 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                 // shopping cart exists
                 cartFromDb.Count += shoppingCart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
             }
             else
             {
                 // add cart - record
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
+                _unitOfWork.Save();
+                // passing the key and the value (get the value through the user id)
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                 _unitOfWork.ShoppingCart.GetAll(c => c.ApplicationUserId == userId).Count());
             }
             TempData["success"] = "Cart updated successfully";
-            _unitOfWork.Save();
 
             return RedirectToAction(nameof(Index));
         }
