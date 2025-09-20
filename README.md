@@ -62,6 +62,6 @@ Follow these steps to run this project locally on your machine.
 
  ## Steps
  1. Clone the repository
-    ```bash
+```bash
    python main.py
-   ```
+```
