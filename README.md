@@ -68,8 +68,8 @@ cd BookStore
 ```
 
 **2. Database Setup**
- * Update the connection string in `appsettings.json` to point to your local SQL Server instance.
- * Run the following commands in the Package Manager Console (PMC) to create the database:
+ - Update the connection string in `appsettings.json` to point to your local SQL Server instance.
+ - Run the following commands in the Package Manager Console (PMC) to create the database:
    
    ```update-database
    Update-Database
