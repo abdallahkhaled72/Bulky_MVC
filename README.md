@@ -40,6 +40,12 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
   ---
   # 🗄️ Project Architecture
   This project follows a structured architecture to ensure separation of concerns, testability, and maintainability.
+
+```text
+BookStore/
+|-- Controllers/  # MVC Controllers
+
+
   
 ```text
 
