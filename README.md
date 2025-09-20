@@ -63,6 +63,6 @@ Follow these steps to run this project locally on your machine.
  ## Steps
  1. Clone the repository
   ```bash
-git clone
+git clone https://github.com/abdallahkhaled72/Bulky_MVC.git
 cd BookStore
   ```
