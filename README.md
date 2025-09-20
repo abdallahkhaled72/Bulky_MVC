@@ -10,15 +10,15 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 - Role-based UI rendering (e.g., Admin vs. Customer)
 
 
-# E-Commerce Functionality
+### E-Commerce Functionality
 - Browse and search through the product categories
 - Secure Online Payments powered by Stripe integration
 - Order history and summary
 
-  # Admin Management
+### Admin Management
 - CRUD operations for Products, Categories, etc
 - Manage user roles and orders
 
 
-  # Responsive Design
+### Responsive Design
   - Built with Bootstrap for a clean
