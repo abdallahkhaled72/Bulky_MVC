@@ -62,7 +62,6 @@ Follow these steps to run this project locally on your machine.
 
  ## Steps
  1. Clone the repository
-  ```bash
-git clone https://github.com/abdallahkhaled72/Bulky_MVC.git
-cd BookStore
-  ```
+    ```bash
+   python main.py
+   ```
