@@ -24,3 +24,31 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
   * Built with Bootstrap for a clean
 ---
 # 🛠️ Tech Stack
+- Backend Framework: ASP.NET Core MVC (.NET 8)
+- Programming Language: C#
+- Database: MS SQL Server
+- ORM: Entity Framework Core
+- Architecture:
+    * Repository Pattern
+    * Unit of Work Pattern
+- Authentication & Authorization: ASP.NET Core Identity
+- Payment Gateway: Stripe API
+- Email Service: SMTP (for email verification)
+- Frontend: HTML5, CSS3, JavaScript, Bootstrap 5
+- Tools: jQuery, AJAX
+
+  ---
+  # 🗄️ Project Architecture
+  This project follows a structured architecture to ensure separation of concerns, testability, and maintainability.
+  ## Project Structure
+
+```text
+BookStore/
+├── Controllers/   # MVC Controllers
+├── Models/        # Domain Models & ViewModels
+├── Views/         # Razor Views
+├── Data/          # ApplicationDbContext and Migrations
+├── Repository/    # Repository Interfaces and Implementations
+├── Utility/       # Helper Classes (e.g., Stripe Service, Email Sender)
+└── wwwroot/       # Static files (JS, CSS, Images)
+  
