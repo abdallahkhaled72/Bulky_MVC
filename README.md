@@ -76,3 +76,10 @@ cd BookStore
    ```update-database
    Update-Database
    ```
+
+   ```
+   2. **Steps in the GUI:**
+
+   * Select your Excel file
+   * select country code
+   * Enter your message
