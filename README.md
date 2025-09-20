@@ -59,4 +59,10 @@ Follow these steps to run this project locally on your machine.
    * [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
    * [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (Express Edition is sufficient)
    * [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
-   * 
+
+ ## Steps
+ 1. Clone the repository
+  ```bash
+git clone
+cd BookStore
+  ```
