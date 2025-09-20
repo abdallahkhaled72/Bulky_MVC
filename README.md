@@ -74,6 +74,6 @@ cd BookStore
    * Run the following commands in the Package Manager Console (PMC) to create the database:
 
 
-    ```update-database
+   ```update-database
    Update-Database
    ```
