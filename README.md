@@ -50,4 +50,7 @@ BookStore/
 ├── Repository/    # Repository Interfaces and Implementations
 ├── Utility/       # Helper Classes (e.g, Stripe Service, Email Sender)
 ├── wwwroot/       # Static files (JS, CSS, Images)
-  
+
+The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
+
+#📦 Installation & Setup
