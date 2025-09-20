@@ -78,6 +78,7 @@ cd BookStore
    ```
 
    3. **Configure Secrets (Stripe & Email):**
+      
       * For local development, use the Secret Manager tool:
         ```bash
         dotnet user-secrets set "Stripe:SecretKey" "your_stripe_secret_key_here"
