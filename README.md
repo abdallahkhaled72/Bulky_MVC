@@ -77,7 +77,7 @@ cd BookStore
    Update-Database
    ```
 
-   ```
+
    2. **Steps in the GUI:**
 
    * Select your Excel file
