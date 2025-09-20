@@ -68,9 +68,9 @@ git clone https://github.com/abdallahkhaled72/Bulky_MVC.git
 cd BookStore
 ```
 
-2. **Database Setup**:
+2. **Database Setup:**
    
- * Update the connection string in `appsettings.json` to point to your local SQL Server instance.
+ * Update the connection string in `appsettings.json` to point to your local SQL Server instance
  * Run the following commands in the Package Manager Console (PMC) to create the database:
    
    ```update-database
