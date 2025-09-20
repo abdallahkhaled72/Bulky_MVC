@@ -77,7 +77,7 @@ cd BookStore
    Update-Database
    ```
 
-   3. **Configure Secrets (Stripe & Email):**
+3. **Configure Secrets (Stripe & Email):**
 
    * For local development, use the Secret Manager tool:
         ```bash
