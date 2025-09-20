@@ -61,7 +61,7 @@ Follow these steps to run this project locally on your machine.
    * [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 
  ## Steps
- 1. **Clone the repository**
+ 1. Clone the repository
 ```bash
 git clone https://github.com/abdallahkhaled72/Bulky_MVC.git
 cd BookStore
