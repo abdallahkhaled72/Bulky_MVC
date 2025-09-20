@@ -76,3 +76,11 @@ cd BookStore
    ```update-database
    Update-Database
    ```
+
+   3. **Configure Secrets (Stripe & Email):**
+      * For local development, use the Secret Manager tool:
+        ```bash
+        dotnet user-secrets set "Stripe:SecretKey" "your_stripe_secret_key_here"
+        dotnet user-secrets set "Stripe:PublishableKey" "your_stripe_publishable_key_here"
+        dotnet user-secrets set "Gmail:Password" "your_app_specific_gmail_password_here"
+        ```
