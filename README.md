@@ -43,18 +43,11 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 
 ```text
 BookStore/
-|-- Controllers/  # MVC Controllers
-
-
-  
-```text
-
-BookStore/
 ├── Controllers/   # MVC Controllers
 ├── Models/        # Domain Models & ViewModels
 ├── Views/         # Razor Views
 ├── Data/          # ApplicationDbContext and Migrations
 ├── Repository/    # Repository Interfaces and Implementations
-├── Utility/       # Helper Classes (e.g., Stripe Service, Email Sender)
-└── wwwroot/       # Static files (JS, CSS, Images)
+├── Utility/       # Helper Classes (e.g, Stripe Service, Email Sender)
+├── wwwroot/       # Static files (JS, CSS, Images)
   
