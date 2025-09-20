@@ -57,6 +57,6 @@ The Repository Pattern and Unit of Work are used to abstract the data layer, mak
 Follow these steps to run this project locally on your machine.
 - Prerequisites
    * [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-   * [SQL Server] (https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (Express Edition is sufficient)
-   * [Visual Studio 2022] (https://visualstudio.microsoft.com/vs/)
+   * [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (Express Edition is sufficient)
+   * [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
    * 
