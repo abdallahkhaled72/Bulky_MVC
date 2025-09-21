@@ -190,8 +190,9 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ---
 # 🙋‍♂️ Contact
 * Abdullah Khaled: 
-   * Email: [abdullakhalid7857166@gmail.com](mailto:abdullakhalid7857166@gmail.com)
-   * [LinkedIn](https://www.linkedin.com/in/abdullah-khaled-393a84233)
-   * [GitHub](https://github.com/abdallahkhaled72)
+- Email: [abdullakhalid7857166@gmail.com](mailto:abdullakhalid7857166@gmail.com)  
+- LinkedIn: [Abdullah Khaled](https://www.linkedin.com/in/abdullah-khaled-393a84233)  
+- GitHub: [abdallahkhaled72](https://github.com/abdallahkhaled72)
+
 ---
   # ⭐ **If you found this project helpful or interesting, please give it a star on GitHub!** 
