@@ -6,6 +6,7 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 # ✨ Features
 - User Authentication & Authorization
   * User Registration and Login with ASP.NET Core Identity
+     * External login: FaceBook  
   * Email Verification during sign-up with expiring confirmation tokens
   * Role-based UI rendering (e.g., Admin vs. Customer)
 
