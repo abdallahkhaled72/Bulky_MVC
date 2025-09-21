@@ -188,9 +188,10 @@ This is a personal portfolio project. However, **suggestions and feedback** are 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ---
-# 🙋‍♂️ Developer
-Abdullah Khaled
-* [LinkedIn](https://www.linkedin.com/in/abdullah-khaled-393a84233)
-* [GitHub](https://github.com/abdallahkhaled72)
+# 🙋‍♂️ Contact
+* Abdullah Khaled: 
+   * [Gmail](abdullakhalid7857166@gmail.com)
+   * [LinkedIn](https://www.linkedin.com/in/abdullah-khaled-393a84233)
+   * [GitHub](https://github.com/abdallahkhaled72)
 ---
   # ⭐ **If you found this project helpful or interesting, please give it a star on GitHub!** 
