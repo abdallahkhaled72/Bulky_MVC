@@ -76,6 +76,33 @@ BookStore.sln (Solution)
     ├── StripeSettings.cs (Stripe configuration DTO)
     └── EmailSender.cs (Implementation of IEmailSender)
 ```
+
+# 🔗 Project Dependencies & References
+The dependency graph illustrates the clean separation between layers:
+
+```text
+BookStore.Web
+    ├── Depends on: BookStore.DataAccess
+    ├── Depends on: BookStore.Models
+    └── Depends on: BookStore.Utility
+
+BookStore.DataAccess
+    └── Depends on: BookStore.Models (The DataAccess layer knows about the Models)
+
+BookStore.Utility
+    └── Depends on: BookStore.Models (e.g., if EmailSender uses a Model)
+
+BookStore.Models
+    └── Has no dependencies. (This is the core of the application)
+```
+
+# 📋 Layer Responsibilities
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1    | Data     | More     |
+| Row 2    | Value    | Info     |
+
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
 
 # 📦 Installation & Setup
