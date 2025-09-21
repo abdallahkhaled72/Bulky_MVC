@@ -101,7 +101,16 @@ cd BookStore
 5. **Admins** can access management features via the navigation bar
 
 ---
+# 📸 Screenshots
+* Home Page
+<img width="500" height="600" alt="UserInterface" src="https://github.com/user-attachments/assets/dd5b0727-3bef-4f6f-9fc0-a5bc399687ff" />
+* Order Summary For User
+<img width="1900" height="1114" alt="OrderSummaryForUserToPlaceOrder" src="https://github.com/user-attachments/assets/e915ab84-2b43-46d4-9bdc-6d17524908db" />
+* Payment Status
+<img width="1895" height="1108" alt="PaymentStatus" src="https://github.com/user-attachments/assets/853676c2-da6d-4467-be54-8b7df56fb98c" />
 
+
+---
 # 🤝 Contributing
 This is a personal portfolio project. However, suggestions and feedback are always welcome! Feel free to fork the repo and submit pull requests for any improvements
 
@@ -115,11 +124,4 @@ Abdullah Khaled
 * [LinkedIn](https://www.linkedin.com/in/abdullah-khaled-393a84233)
 * [GitHub](https://github.com/abdallahkhaled72)
 ---
-  # ⭐ **If you found this project helpful or interesting, please give it a star on GitHub!**
-
-
-
-
-<img width="500" height="600" alt="UserInterface" src="https://github.com/user-attachments/assets/dd5b0727-3bef-4f6f-9fc0-a5bc399687ff" />
-
-  
+  # ⭐ **If you found this project helpful or interesting, please give it a star on GitHub!** 
