@@ -100,10 +100,10 @@ BookStore.Models
 
 | Layer                | Purpose                                                    | Key Components                                          |
 |----------------------|------------------------------------------------------------|---------------------------------------------------------|
-| **BookStore.Web**        | Presentation Layer<br>Handles HTTP requests, UI logic, and serves views. | Controllers, Razor Views, JavaScript, CSS               |
-| **BookStore.Models**     | Domain Layer<br>Contains the core business entities and data contracts. | Entity Classes, ViewModels, Enums                       |
-| **BookStore.DataAccess** | Data Access Layer<br>Abstracts all database interactions. | DbContext, Repository Pattern, Unit of Work, Migrations |
-| **BookStore.Utility**    | Cross-Cutting Concerns Layer<br>Holds common services and helpers used across other layers. | Email Service, Payment Gateway Config, Constants        |
+| **BookStore.Web**        | **Presentation Layer**<br>Handles HTTP requests, UI logic, and serves views. | Controllers, Razor Views, JavaScript, CSS               |
+| **BookStore.Models**     | **Domain Layer**<br>Contains the core business entities and data contracts. | Entity Classes, ViewModels, Enums                       |
+| **BookStore.DataAccess** | **Data Access Layer**<br>Abstracts all database interactions. | DbContext, Repository Pattern, Unit of Work, Migrations |
+| **BookStore.Utility**    | **Cross-Cutting Concerns Layer**<br>Holds common services and helpers used across other layers. | Email Service, Payment Gateway Config, Constants        |
 
 
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
