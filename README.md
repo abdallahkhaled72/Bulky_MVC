@@ -3,7 +3,7 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 
 ---
 
-# ✨Features
+# ✨ Features
 - User Authentication & Authorization
   * User Registration and Login with ASP.NET Core Identity
   * Email Verification during sign-up with expiring confirmation tokens
@@ -53,7 +53,7 @@ BookStore/
 ```
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
 
-# 📦Installation & Setup
+# 📦 Installation & Setup
 Follow these steps to run this project locally on your machine.
 - Prerequisites
    * [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
@@ -89,3 +89,28 @@ cd BookStore
    ```bash
    dotnet run
    ```
+---
+# 🚀 Usage
+1. **Register a new account.** You will receive a verification email
+2. **Log in** and browse the book catalog
+3. **Add books** to your shopping cart
+4. **Proceed to checkout** and use Stripe's test card to simulate a payment:
+   * Card Number: '4242 4242 4242 4242'
+   * Expiry: Any future date
+   * CVC: Any 3 digits
+5. **Admins** can access management features via the navigation bar
+
+---
+
+# 🤝 Contributing
+This is a personal portfolio project. However, suggestions and feedback are always welcome! Feel free to fork the repo and submit pull requests for any improvements
+
+---
+# 📄License
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+---
+# 🙋‍♂️ Author
+Abdullah Khaled
+* LinkedIn: [Abdullah-Khaled]()
+* GitHub: [Abdullah-Khaled]()
