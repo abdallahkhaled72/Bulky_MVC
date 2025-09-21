@@ -42,18 +42,39 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 - **Tools:** jQuery, AJAX
 
   ---
-  # 🗄️ Project Architecture
-  This project follows a structured architecture to ensure separation of concerns, testability, and maintainability.
+  # 🏗️ Solution Architecture
+  This solution is structured into multiple Class Library projects to enforce a clear **Separation of Concerns** and promote **maintainability**. The architecture follows a layered principle, where each layer has a distinct responsibility and references only the layers it depends on.
 
 ```text
-BookStore/
-├── Controllers/   # MVC Controllers
-├── Models/        # Domain Models & ViewModels
-├── Views/         # Razor Views
-├── Data/          # ApplicationDbContext and Migrations
-├── Repository/    # Repository Interfaces and Implementations
-├── Utility/       # Helper Classes (e.g, Stripe Service, Email Sender)
-├── wwwroot/       # Static files (JS, CSS, Images)
+BookStore.sln (Solution)
+│
+├── 📁 BookStore.Web (Main ASP.NET Core MVC Project)
+│   ├── Areas/
+│   │   ├── Admin/
+│   │   ├── Customer/
+│   │   └── Identity/
+│   ├── Controllers/
+│   ├── Views/
+│   ├── wwwroot/
+│   └── Program.cs (Configures services from other libraries)
+│
+├── 📦 BookStore.DataAccess (Class Library)
+│   ├── Data/ (Contains ApplicationDbContext)
+│   ├── Repository/ (IRepository, IUnitOfWork, and their implementations)
+│   ├── DbInitializer/ (IDbInitializer and DbInitializer)
+│   └── Migrations/ (Entity Framework Core Migrations)
+│
+├── 📦 BookStore.Models (Class Library)
+│   ├── ViewModels/ (All ViewModels, e.g., ShoppingCartVM)
+│   ├── ApplicationUser.cs
+│   ├── Category.cs
+│   ├── Product.cs
+│   └── ... (All other Domain Models)
+│
+└── 📦 BookStore.Utility (Class Library)
+    ├── SD.cs (Static Details - Constants for roles, order statuses, etc.)
+    ├── StripeSettings.cs (Stripe configuration DTO)
+    └── EmailSender.cs (Implementation of IEmailSender)
 ```
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
 
