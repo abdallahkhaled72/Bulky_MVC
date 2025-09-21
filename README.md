@@ -27,16 +27,16 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 - Responsive Design
   * Built with Bootstrap for a clean
 ---
-### 👨‍💼 Role-Based Access Control (RBAC)
+### 👨‍💼 Role-Based Access Control (RBAC) & Payment Terms
 
-The application implements a sophisticated authentication system with four distinct user roles, each with tailored permissions and views:
+The application implements a sophisticated authentication system with four distinct user roles. A key feature is the **differentiated payment processing logic** based on the user's role:
 
-| Role | Responsibilities | UI Access |
+| Role | Responsibilities | Payment Terms |
 | :--- | :--- | :--- |
-| **Admin** | Global system administrator. Manages all products, categories, users, and companies. | Admin Area |
-| **Company** | Represents a business selling on the platform. Manages their own product catalog and views their order history. | Admin Area (Restricted Views) |
-| **Employee** | Works for a **Company**. Can update order statuses and manage products for their company. | Admin Area (Restricted Views) |
-| **Customer** | An individual shopper. Browses, purchases items, and manages their personal account. | Customer Area |
+| **Admin** | Global system administrator. Manages all products, categories, users, and companies. | N/A |
+| **Company** | Represents a business selling on the platform. Manages their own product catalog. | **✅ Delayed Payment Approved.** Orders are approved immediately but payment can be delayed for up to 30 days. |
+| **Employee** | Works for a **Company**. Can update order statuses and manage products for their company. | **✅ Delayed Payment Approved.** Inherits the payment terms of their associated company. |
+| **Customer** | An individual shopper. Browses and purchases items for personal use. | **❌ Immediate Payment Required.** Payment must be completed successfully at the time of checkout using Stripe. |
 ---
 # 🛠️ Tech Stack
 - **Backend Framework:** ASP.NET Core MVC (.NET 8)
