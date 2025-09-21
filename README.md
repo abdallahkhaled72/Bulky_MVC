@@ -184,10 +184,6 @@ cd BookStore
 This is a personal portfolio project. However, **suggestions and feedback** are always welcome! Feel free to fork the repo and submit pull requests for any improvements
 
 ---
-# License
-This project is licensed under the MIT License - see the LICENSE.md file for details
-
----
 # Contact
    - Email: [abdullakhalid7857166@gmail.com](mailto:abdullakhalid7857166@gmail.com)
    - LinkedIn: [Abdullah Khaled](https://www.linkedin.com/in/abdullah-khaled-393a84233)  
