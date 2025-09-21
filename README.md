@@ -1,4 +1,4 @@
-# BookStore - E-Commerce Platform
+# Bulky - E-Commerce Platform
 A fully functional, production-ready Online Book Store built with ASP.NET Core MVC. This project demonstrates a modern, scalable backend architecture for an e-commerce platform that can be adapted to sell a diverse range of products online.
 
 ---
@@ -57,9 +57,9 @@ The application implements a sophisticated authentication system with four disti
   This solution is structured into multiple Class Library projects to enforce a clear **Separation of Concerns** and promote **maintainability**. The architecture follows a layered principle, where each layer has a distinct responsibility and references only the layers it depends on.
 
 ```text
-BookStore.sln (Solution)
+Bulky.sln (Solution)
 │
-├──  BookStore.Web (Main ASP.NET Core MVC Project)
+├──  Bulky.Web (Main ASP.NET Core MVC Project)
 │   ├── Areas/
 │   │   ├── Admin/
 │   │   ├── Customer/
@@ -69,20 +69,20 @@ BookStore.sln (Solution)
 │   ├── wwwroot/
 │   └── Program.cs (Configures services from other libraries)
 │
-├──  BookStore.DataAccess (Class Library)
+├──  Bulky.DataAccess (Class Library)
 │   ├── Data/ (Contains ApplicationDbContext)
 │   ├── Repository/ (IRepository, IUnitOfWork, and their implementations)
 │   ├── DbInitializer/ (IDbInitializer and DbInitializer)
 │   └── Migrations/ (Entity Framework Core Migrations)
 │
-├──  BookStore.Models (Class Library)
+├──  Bulky.Models (Class Library)
 │   ├── ViewModels/ (All ViewModels, e.g., ShoppingCartVM)
 │   ├── ApplicationUser.cs
 │   ├── Category.cs
 │   ├── Product.cs
 │   └── ... (All other Domain Models)
 │
-└──  BookStore.Utility (Class Library)
+└──  Bulky.Utility (Class Library)
     ├── SD.cs (Static Details - Constants for roles, order statuses, etc.)
     ├── StripeSettings.cs (Stripe configuration DTO)
     └── EmailSender.cs (Implementation of IEmailSender)
@@ -92,18 +92,18 @@ BookStore.sln (Solution)
 The dependency graph illustrates the clean separation between layers:
 
 ```text
-BookStore.Web
-    ├── Depends on: BookStore.DataAccess
-    ├── Depends on: BookStore.Models
-    └── Depends on: BookStore.Utility
+Bulky.Web
+    ├── Depends on: Bulky.DataAccess
+    ├── Depends on: Bulky.Models
+    └── Depends on: Bulky.Utility
 
-BookStore.DataAccess
-    └── Depends on: BookStore.Models (The DataAccess layer knows about the Models)
+Bulky.DataAccess
+    └── Depends on: Bulky.Models (The DataAccess layer knows about the Models)
 
-BookStore.Utility
-    └── Depends on: BookStore.Models (e.g., if EmailSender uses a Model)
+Bulky.Utility
+    └── Depends on: Bulky.Models (e.g., if EmailSender uses a Model)
 
-BookStore.Models
+Bulky.Models
     └── Has no dependencies. (This is the core of the application)
 ```
 
@@ -111,10 +111,10 @@ BookStore.Models
 
 | Layer                | Purpose                                                    | Key Components                                          |
 |----------------------|------------------------------------------------------------|---------------------------------------------------------|
-| **BookStore.Web**        | **Presentation Layer**<br>Handles HTTP requests, UI logic, and serves views. | Controllers, Razor Views, JavaScript, CSS               |
-| **BookStore.Models**     | **Domain Layer**<br>Contains the core business entities and data contracts. | Entity Classes, ViewModels, Enums                       |
-| **BookStore.DataAccess** | **Data Access Layer**<br>Abstracts all database interactions. | DbContext, Repository Pattern, Unit of Work, Migrations |
-| **BookStore.Utility**    | **Cross-Cutting Concerns Layer**<br>Holds common services and helpers used across other layers. | Email Service, Payment Gateway Config, Constants        |
+| **Bulky.Web**        | **Presentation Layer**<br>Handles HTTP requests, UI logic, and serves views. | Controllers, Razor Views, JavaScript, CSS               |
+| **Bulky.Models**     | **Domain Layer**<br>Contains the core business entities and data contracts. | Entity Classes, ViewModels, Enums                       |
+| **Bulky.DataAccess** | **Data Access Layer**<br>Abstracts all database interactions. | DbContext, Repository Pattern, Unit of Work, Migrations |
+| **Bulky.Utility**    | **Cross-Cutting Concerns Layer**<br>Holds common services and helpers used across other layers. | Email Service, Payment Gateway Config, Constants        |
 
 
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
@@ -131,7 +131,7 @@ Follow these steps to run this project locally on your machine.
 1. **Clone the repository:**
 ```bash
 git clone https://github.com/abdallahkhaled72/Bulky_MVC.git
-cd BookStore
+cd Bulky
 ```
 
 2. **Database Setup:**
