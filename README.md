@@ -120,6 +120,6 @@ Abdullah Khaled
 
 
 
-<img width="1916" height="1114" alt="UserInterface" src="https://github.com/user-attachments/assets/dd5b0727-3bef-4f6f-9fc0-a5bc399687ff" />
+<img width="500" height="500" alt="UserInterface" src="https://github.com/user-attachments/assets/dd5b0727-3bef-4f6f-9fc0-a5bc399687ff" />
 
   
