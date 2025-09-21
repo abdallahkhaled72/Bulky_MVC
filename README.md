@@ -27,6 +27,17 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 - Responsive Design
   * Built with Bootstrap for a clean
 ---
+### 👨‍💼 Role-Based Access Control (RBAC)
+
+The application implements a sophisticated authentication system with four distinct user roles, each with tailored permissions and views:
+
+| Role | Responsibilities | UI Access |
+| :--- | :--- | :--- |
+| **Admin** | Global system administrator. Manages all products, categories, users, and companies. | Admin Area |
+| **Company** | Represents a business selling on the platform. Manages their own product catalog and views their order history. | Admin Area (Restricted Views) |
+| **Employee** | Works for a **Company**. Can update order statuses and manage products for their company. | Admin Area (Restricted Views) |
+| **Customer** | An individual shopper. Browses, purchases items, and manages their personal account. | Customer Area |
+---
 # 🛠️ Tech Stack
 - **Backend Framework:** ASP.NET Core MVC (.NET 8)
 - **Programming Language:** C#
