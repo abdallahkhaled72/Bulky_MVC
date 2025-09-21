@@ -3,7 +3,7 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 
 ---
 
-# ✨ Features
+#  Features
 - User Authentication & Authorization
   * User Registration and Login with ASP.NET Core Identity
      * External login: Facebook  
@@ -27,7 +27,7 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
 - Responsive Design
   * Built with Bootstrap for a clean
 ---
-### 👨‍💼 Role-Based Access Control (RBAC) & Payment Terms
+###  Role-Based Access Control (RBAC) & Payment Terms
 
 The application implements a sophisticated authentication system with four distinct user roles. A key feature is the **differentiated payment processing logic** based on the user's role:
 
@@ -53,13 +53,13 @@ The application implements a sophisticated authentication system with four disti
 - **Tools:** jQuery, AJAX
 
   ---
-  # 🏗️ Solution Architecture
+  #  Solution Architecture
   This solution is structured into multiple Class Library projects to enforce a clear **Separation of Concerns** and promote **maintainability**. The architecture follows a layered principle, where each layer has a distinct responsibility and references only the layers it depends on.
 
 ```text
 BookStore.sln (Solution)
 │
-├── 📁 BookStore.Web (Main ASP.NET Core MVC Project)
+├──  BookStore.Web (Main ASP.NET Core MVC Project)
 │   ├── Areas/
 │   │   ├── Admin/
 │   │   ├── Customer/
@@ -69,26 +69,26 @@ BookStore.sln (Solution)
 │   ├── wwwroot/
 │   └── Program.cs (Configures services from other libraries)
 │
-├── 📦 BookStore.DataAccess (Class Library)
+├──  BookStore.DataAccess (Class Library)
 │   ├── Data/ (Contains ApplicationDbContext)
 │   ├── Repository/ (IRepository, IUnitOfWork, and their implementations)
 │   ├── DbInitializer/ (IDbInitializer and DbInitializer)
 │   └── Migrations/ (Entity Framework Core Migrations)
 │
-├── 📦 BookStore.Models (Class Library)
+├──  BookStore.Models (Class Library)
 │   ├── ViewModels/ (All ViewModels, e.g., ShoppingCartVM)
 │   ├── ApplicationUser.cs
 │   ├── Category.cs
 │   ├── Product.cs
 │   └── ... (All other Domain Models)
 │
-└── 📦 BookStore.Utility (Class Library)
+└──  BookStore.Utility (Class Library)
     ├── SD.cs (Static Details - Constants for roles, order statuses, etc.)
     ├── StripeSettings.cs (Stripe configuration DTO)
     └── EmailSender.cs (Implementation of IEmailSender)
 ```
 
-# 🔗 Project Dependencies & References
+# Project Dependencies & References
 The dependency graph illustrates the clean separation between layers:
 
 ```text
@@ -119,7 +119,7 @@ BookStore.Models
 
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
 
-# 📦 Installation & Setup
+# Installation & Setup
 Follow these steps to run this project locally on your machine.
 - Prerequisites
    * [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
@@ -156,7 +156,7 @@ cd BookStore
    dotnet run
    ```
 ---
-# 🚀 Usage
+# Usage
 1. **Register a new account.** You will receive a verification email
 2. **Log in** and browse the book catalog
 3. **Log in** by Facebook account
@@ -180,18 +180,18 @@ cd BookStore
 
 
 ---
-# 🤝 Contributing
+# Contributing
 This is a personal portfolio project. However, **suggestions and feedback** are always welcome! Feel free to fork the repo and submit pull requests for any improvements
 
 ---
-# 📄License
+# License
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ---
-# 🙋‍♂️ Contact
+# Contact
    - Email: [abdullakhalid7857166@gmail.com](mailto:abdullakhalid7857166@gmail.com)
    - LinkedIn: [Abdullah Khaled](https://www.linkedin.com/in/abdullah-khaled-393a84233)  
    - GitHub: [abdallahkhaled72](https://github.com/abdallahkhaled72)
 
 ---
-  # ⭐ **If you found this project helpful or interesting, please give it a star on GitHub!** 
+  # **If you found this project helpful or interesting, please give it a star on GitHub!** 
