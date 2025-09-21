@@ -148,12 +148,13 @@ cd BookStore
 # 🚀 Usage
 1. **Register a new account.** You will receive a verification email
 2. **Log in** and browse the book catalog
-3. **Add books** to your shopping cart
-4. **Proceed to checkout** and use Stripe's test card to simulate a payment:
+3. **Log in** by Facebook account
+4. **Add books** to your shopping cart
+5. **Proceed to checkout** and use Stripe's test card to simulate a payment:
    * Card Number: `4242 4242 4242 4242`
    * Expiry: Any future date
    * CVC: Any 3 digits
-5. **Admins** can access management features via the navigation bar
+6. **Admins** can access management features via the navigation bar
 
 ---
 # 📸 Screenshots
