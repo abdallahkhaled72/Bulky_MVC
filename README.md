@@ -95,7 +95,7 @@ cd BookStore
 2. **Log in** and browse the book catalog
 3. **Add books** to your shopping cart
 4. **Proceed to checkout** and use Stripe's test card to simulate a payment:
-   * Card Number: '4242 4242 4242 4242'
+   * Card Number: `4242 4242 4242 4242`
    * Expiry: Any future date
    * CVC: Any 3 digits
 5. **Admins** can access management features via the navigation bar
