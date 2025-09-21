@@ -38,7 +38,7 @@ The application implements a sophisticated authentication system with four disti
 | **Employee** | Works for a **Company**. Can update order statuses and manage products for their company. | **✅ Delayed Payment Approved.** Inherits the payment terms of their associated company. |
 | **Customer** | An individual shopper. Browses and purchases items for personal use. | **❌ Immediate Payment Required.** Payment must be completed successfully at the time of checkout using Stripe. |
 ---
-# 🛠️ Tech Stack
+# Tech Stack
 - **Backend Framework:** ASP.NET Core MVC (.NET 8)
 - **Programming Language:** C#
 - **Database:** MS SQL Server
@@ -107,7 +107,7 @@ BookStore.Models
     └── Has no dependencies. (This is the core of the application)
 ```
 
-# 📋 Layer Responsibilities
+# Layer Responsibilities
 
 | Layer                | Purpose                                                    | Key Components                                          |
 |----------------------|------------------------------------------------------------|---------------------------------------------------------|
@@ -168,7 +168,7 @@ cd BookStore
 6. **Admins** can access management features via the navigation bar
 
 ---
-# 📸 Screenshots
+# Screenshots
 ## Home Page
 <img width="600" height="400" alt="UserInterface" src="https://github.com/user-attachments/assets/dd5b0727-3bef-4f6f-9fc0-a5bc399687ff" />
 
