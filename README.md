@@ -1,23 +1,26 @@
 # BookStore - E-Commerce Platform
-A fully functional, production-ready Online Book Store built with ASP.NET Core MVC. This project demonstrates a modern, scalable backend architecture for an e-commerce platform that can be adapted to sell any type of product online.
+A fully functional, production-ready Online Book Store built with ASP.NET Core MVC. This project demonstrates a modern, scalable backend architecture for an e-commerce platform that can be adapted to sell a diverse range of products online.
 
 ---
 
 # ✨ Features
 - User Authentication & Authorization
   * User Registration and Login with ASP.NET Core Identity
-     * External login: FaceBook  
+     * External login: Facebook  
   * Email Verification during sign-up with expiring confirmation tokens
   * Role-based UI rendering (e.g., Admin vs. Customer)
 
 
 - E-Commerce Functionality
   * Browse and search through the product categories
+  * Track your order progress
   * Secure Online Payments powered by Stripe integration
   * Order history and summary
 
 - Admin Management
   * CRUD operations for Products, Categories, etc
+  * Lock users
+  * Create new user
   * Manage user roles and orders
 
 
@@ -25,18 +28,18 @@ A fully functional, production-ready Online Book Store built with ASP.NET Core M
   * Built with Bootstrap for a clean
 ---
 # 🛠️ Tech Stack
-- Backend Framework: ASP.NET Core MVC (.NET 8)
-- Programming Language: C#
-- Database: MS SQL Server
-- ORM: Entity Framework Core
-- Architecture:
+- **Backend Framework:** ASP.NET Core MVC (.NET 8)
+- **Programming Language:** C#
+- **Database:** MS SQL Server
+- **ORM:** Entity Framework Core
+- **Architecture:**
     * Repository Pattern
     * Unit of Work Pattern
-- Authentication & Authorization: ASP.NET Core Identity
-- Payment Gateway: Stripe API
-- Email Service: SMTP (for email verification)
-- Frontend: HTML5, CSS3, JavaScript, Bootstrap 5
-- Tools: jQuery, AJAX
+- **Authentication & Authorization:** ASP.NET Core Identity, Facebook OAuth 2.0
+- **Payment Processing:** Stripe API
+- **Other Services:** Custom Email Service (SMTP for email verification), Session Management
+- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5, Razor Views
+- **Tools:** jQuery, AJAX
 
   ---
   # 🗄️ Project Architecture
