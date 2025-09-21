@@ -104,8 +104,10 @@ cd BookStore
 # 📸 Screenshots
 * Home Page
 <img width="600" height="400" alt="UserInterface" src="https://github.com/user-attachments/assets/dd5b0727-3bef-4f6f-9fc0-a5bc399687ff" />
+
 * Order Summary For User
 <img width="600" height="400" alt="OrderSummaryForUserToPlaceOrder" src="https://github.com/user-attachments/assets/e915ab84-2b43-46d4-9bdc-6d17524908db" />
+
 * Payment Status
 <img width="600" height="400" alt="PaymentStatus" src="https://github.com/user-attachments/assets/853676c2-da6d-4467-be54-8b7df56fb98c" />
 
