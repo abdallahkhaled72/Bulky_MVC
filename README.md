@@ -98,10 +98,16 @@ BookStore.Models
 
 # 📋 Layer Responsibilities
 
-| Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
-| Row 1    | Data     | More     |
-| Row 2    | Value    | Info     |
+| Layer                | Purpose                                                    | Key Components                                          |
+|----------------------|------------------------------------------------------------|---------------------------------------------------------|
+| BookStore.Web        | Presentation Layer
+                         Handles HTTP requests, UI logic, and serves views.         | Controllers, Razor Views, JavaScript, CSS               |
+| BookStore.Models     | Domain Layer
+                         Contains the core business entities and data contracts.    | Entity Classes, ViewModels, Enums                       |
+| BookStore.DataAccess | Data Access Layer
+                         Abstracts all database interactions.                       | DbContext, Repository Pattern, Unit of Work, Migrations |
+| BookStore.Utility    | Cross-Cutting Concerns Layer
+                         Holds common services and helpers used across other layers.| Email Service, Payment Gateway Config, Constants        |
 
 The Repository Pattern and Unit of Work are used to abstract the data layer, making the application more flexible and easier to test
 
