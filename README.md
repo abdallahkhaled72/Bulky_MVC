@@ -112,5 +112,5 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ---
 # 🙋‍♂️ Author
 Abdullah Khaled
-* LinkedIn: [Abdullah-Khaled](www.linkedin.com/in/abdullah-khaled-393a84233)
+* LinkedIn: [Abdullah-Khaled](https://www.linkedin.com/in/abdullah-khaled-393a84233)
 * GitHub: [Abdullah-Khaled](https://github.com/abdallahkhaled72)
