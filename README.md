@@ -181,7 +181,7 @@ cd BookStore
 
 ---
 # 🤝 Contributing
-This is a personal portfolio project. However, suggestions and feedback are always welcome! Feel free to fork the repo and submit pull requests for any improvements
+This is a personal portfolio project. However, **suggestions and feedback** are always welcome! Feel free to fork the repo and submit pull requests for any improvements
 
 ---
 # 📄License
